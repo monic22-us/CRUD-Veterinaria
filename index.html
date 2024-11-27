@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD Veterinaria</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>CRUD Veterinaria</h1>
+  </header>
+  <main>
+    <!-- Formulario para Crear y Actualizar -->
+    <section id="form-section">
+      <h2>Formulario de Mascota</h2>
+      <form id="pet-form">
+        <input type="hidden" id="edit-index">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" required>
+        
+        <label for="owner">Dueño:</label>
+        <input type="text" id="owner" required>
+        
+        <label for="species">Especie:</label>
+        <input type="text" id="species" required>
+        
+        <label for="age">Edad:</label>
+        <input type="number" id="age" required>
+        
+        <button type="submit">Guardar</button>
+        <button type="reset" id="cancel-edit" style="display: none;">Cancelar</button>
+      </form>
+    </section>
+
+    <!-- Barra de búsqueda -->
+    <section id="search-section">
+      <h2>Buscar Registro</h2>
+      <input type="text" id="search-bar" placeholder="Escribe el nombre de la mascota...">
+    </section>
+
+    <!-- Lista de Mascotas -->
+    <section id="list-section">
+      <h2>Lista de Mascotas</h2>
+      <ul id="pet-list"></ul>
+    </section>
+  </main>
+  <footer>
+    <p>CRUD Veterinaria - Ejemplo</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
