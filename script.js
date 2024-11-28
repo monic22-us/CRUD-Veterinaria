@@ -1,7 +1,7 @@
-const petForm = document.getElementById('pet-form');
-const petList = document.getElementById('pet-list');
-const searchBar = document.getElementById('search-bar');
-const cancelEditBtn = document.getElementById('cancel-edit');
+const petForm = document.getElementById('pet-form'); // Formulario 
+const petList = document.getElementById('pet-list');// Lista
+const searchBar = document.getElementById('search-bar'); // Barra de búsqueda
+const cancelEditBtn = document.getElementById('cancel-edit'); // Cancelar edición
 
 let pets = []; // Lista en memoria
 let editIndex = null; // Índice de edición actual
