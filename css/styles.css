@@ -17,10 +17,16 @@ body {
     padding: 20px;
   }
   
-  h2 {
-    color: #4e4caf;
-    
+  h2{
+    color: #ac4caf;
   }
+  h3 {
+    color: #ac4caf;
+    font-size: 25px;
+
+  }
+ 
+  
   
   /*form, #search-section, #list-section {
     margin-bottom: 20px;
@@ -33,7 +39,8 @@ body {
 #pet-form {
   width: 100%;
   max-width: 500px;
-  margin: 0 auto;
+  /* margin: 0 auto;*/
+  margin-bottom: 20px;
 }
 
 /* Contenedor de cada grupo de etiqueta + input */
@@ -55,7 +62,7 @@ body {
 .form-group input {
   flex: 1; /* Hace que el input ocupe el resto del espacio disponible */
   padding: 8px; /* Agrega espacio interno */
-  border: 1px solid #ccc; /* Borde básico */
+  border: 1px solid #978383; /* Borde básico */
   border-radius: 5px; /* Bordes redondeados */
   font-size: 14px; /* Tamaño de fuente */
 }
@@ -93,6 +100,7 @@ body {
     background-color: #af4c96;
     color: white;
     cursor: pointer;
+    max-width: 200px;
   }
   
   button:hover {
@@ -104,8 +112,8 @@ body {
   }
   
   #cancel-edit:hover {
-    background-color: #e53935;
-  }*/
+    background-color: #35c2e5;
+  }
   
   ul {
     list-style: none;
@@ -137,3 +145,11 @@ body {
     opacity: 0.8;
   }
   
+  .list-section {
+    margin-top: 20px;
+    align-items: left;
+
+  }
+  
+
+

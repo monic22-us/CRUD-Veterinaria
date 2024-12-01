@@ -1,5 +1,5 @@
 const petForm = document.getElementById('pet-form'); // Formulario 
-const petList = document.getElementById('pet-list');// Lista
+const petListTable = document.getElementById('pet-list-table'); // Tabla
 const searchBar = document.getElementById('search-bar'); // Barra de búsqueda
 const cancelEditBtn = document.getElementById('cancel-edit'); // Cancelar edición
 
@@ -25,7 +25,7 @@ petForm.addEventListener('submit', (e) => {
   }
 
   petForm.reset();
-  renderList();
+  renderTable();
 });
 
 // Cancelar edición
@@ -35,23 +35,35 @@ cancelEditBtn.addEventListener('click', () => {
   cancelEditBtn.style.display = 'none';
 });
 
-// Leer
-function renderList() {
-  petList.innerHTML = '';
+// Mostrar la tabla
+function renderTable() {
+  petListTable.innerHTML = '';
   pets.forEach((pet, index) => {
-    const listItem = document.createElement('li');
-    listItem.innerHTML = `
-      <span>${pet.name} - ${pet.owner} - ${pet.species} - ${pet.age} años</span>
-      <div class="actions">
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${pet.name}</td>
+      <td>${pet.owner}</td>
+      <td>${pet.species}</td>
+      <td>${pet.age}</td>
+      <td>
         <button class="edit" onclick="editPet(${index})">Editar</button>
-        <button onclick="deletePet(${index})">Eliminar</button>
-      </div>
+        <button class="delete" onclick="deletePet(${index})">Eliminar</button>
+      </td>
     `;
-    petList.appendChild(listItem);
+    petListTable.appendChild(row);
+  });
+
+  // Mostrar la tabla una vez haya datos
+  document.getElementById('pet-table').style.display = 'table';
+  $('#pet-table').DataTable().destroy(); // Destruir cualquier instancia previa de DataTable
+  $('#pet-table').DataTable({
+    "language": {
+      "url": "https://cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
+    }
   });
 }
 
-// Actualizar
+// Editar
 function editPet(index) {
   const pet = pets[index];
   document.getElementById('name').value = pet.name;
@@ -66,7 +78,7 @@ function editPet(index) {
 // Eliminar
 function deletePet(index) {
   pets.splice(index, 1);
-  renderList();
+  renderTable();
 }
 
 // Buscar
@@ -76,16 +88,19 @@ searchBar.addEventListener('input', (e) => {
     pet.name.toLowerCase().includes(query)
   );
 
-  petList.innerHTML = '';
+  petListTable.innerHTML = '';
   filteredPets.forEach((pet, index) => {
-    const listItem = document.createElement('li');
-    listItem.innerHTML = `
-      <span>${pet.name} - ${pet.owner} - ${pet.species} - ${pet.age} años</span>
-      <div class="actions">
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${pet.name}</td>
+      <td>${pet.owner}</td>
+      <td>${pet.species}</td>
+      <td>${pet.age}</td>
+      <td>
         <button class="edit" onclick="editPet(${index})">Editar</button>
-        <button onclick="deletePet(${index})">Eliminar</button>
-      </div>
+        <button class="delete" onclick="deletePet(${index})">Eliminar</button>
+      </td>
     `;
-    petList.appendChild(listItem);
+    petListTable.appendChild(row);
   });
 });

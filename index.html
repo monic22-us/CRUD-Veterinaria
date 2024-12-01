@@ -1,11 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CRUD Veterinaria</title>
   <link rel="stylesheet" href="css/styles.css">
+  
+  <!-- Agrega la librería jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+  <!-- Agregar css para datatables -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap4.css">
+
+  <!-- Agregar el idioma en español para DataTables -->
+  <script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"></script>
 </head>
+
 <body>
   <header>
     <h1>Midnight Pet Clinic</h1>
@@ -18,41 +31,55 @@
         <input type="hidden" id="edit-index">
         <div class="form-group">
           <label for="name">Nombre:</label>
-          <input type="text" id="name" required>
+          <input type="text" id="name" required placeholder="Nombre de la Mascota">
         </div>
         <div class="form-group">
           <label for="owner">Dueño:</label>
-          <input type="text" id="owner" required>
+          <input type="text" id="owner" required placeholder="Nombre del dueño">
         </div>
         <div class="form-group">
           <label for="species">Especie:</label>
-          <input type="text" id="species" required>
+          <input type="text" id="species" required placeholder="Perro, Gato, etc.">
         </div>
         <div class="form-group">
           <label for="age">Edad:</label>
-          <input type="number" id="age" required>
+          <input type="number" id="age" required placeholder="Edad de la Mascota">
         </div>
         <button type="submit">Guardar</button>
         <button type="reset" id="cancel-edit" style="display: none;">Cancelar</button>
       </form>
-      
     </section>
 
     <!-- Barra de búsqueda -->
     <section id="search-section">
       <h2>Buscar Registro</h2>
-      <input type="text" id="search-bar" placeholder="Nombre de la Mascota">
+      <input type="text" id="search-bar" placeholder="Escribe el nombre de la mascota">
     </section>
 
-    <!-- Lista de Mascotas -->
-    <section id="list-section">
-      <h2>Lista de Mascotas</h2>
-      <ul id="pet-list"></ul>
+    <!-- Tabla de Mascotas -->
+    <section id="table-section">
+    
+      <table id="pet-table" class="table table-striped table-bordered" style="display: none;">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Dueño</th>
+            <th>Especie</th>
+            <th>Edad</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="pet-list-table"></tbody>
+      </table>
     </section>
   </main>
+
   <footer>
     <p>CRUD Veterinaria - 2024</p>
   </footer>
+
+  <!-- Aquí va el archivo JavaScript -->
   <script src="script.js"></script>
+
 </body>
 </html>
