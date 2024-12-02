@@ -11,7 +11,7 @@ https://github.com/user-attachments/assets/4612d340-93a4-4c91-9db5-9422820c2033
 
 
 
-##Funcionalidades 
+## Funcionalidades 
 1. Agregar una nueva mascota: Permite ingresar los datos de una nueva mascota (nombre, dueño, especie, edad) a través de un formulario.
    
    ![registrar nueva mascota](https://github.com/user-attachments/assets/003b72cd-9c86-4280-aca4-3f967c5fda74)
@@ -30,12 +30,12 @@ https://github.com/user-attachments/assets/4612d340-93a4-4c91-9db5-9422820c2033
 * DataTables.js: Librería JavaScript para la creación de tablas interactivas (paginación, búsqueda, etc.).
 * Font Awesome: Iconos utilizados en los botones de Editar y Eliminar.
 
-##Requisitos 📋
+## Requisitos 📋
 * Navegador web (Chrome, Firefox, etc.)
 * Editor de texto o IDE (Visual Studio Code, Sublime Text, etc.)
 
 
-##Instalación 🔧
+## Instalación 🔧
 
 Sigue estos pasos para ejecutar el proyecto localmente en tu máquina:
 
@@ -56,20 +56,20 @@ _3. Abrir el archivo HTML en tu navegador:_
 Abre el archivo index.html directamente en tu navegador web, sin necesidad de servidores adicionales.
 
 ```
-##Dependencias
+## Dependencias
 Este proyecto utiliza las siguientes dependencias externas:
 
 * jQuery
 * DataTables
 * Font Awesome
 
-###Uso
+## Uso
 * Agregar una nueva mascota: Llena el formulario con los detalles de la mascota (nombre, dueño, especie, edad) y haz clic en Guardar.
 * Editar una mascota existente: Haz clic en Editar al lado de una mascota en la tabla. Los datos de esa mascota se cargarán en el formulario, donde podrás modificar la información. Luego, haz clic en Actualizar.
 * Eliminar una mascota: Haz clic en Eliminar al lado de una mascota en la tabla para eliminar el registro.
 * Buscar una mascota: Usa la barra de búsqueda en la parte superior de la tabla para encontrar una mascota por su nombre, dueño o especie.
   
-##Estructura de Archivos
+## Estructura de Archivos
 ```
 /Midnight-Pet-Clinic
 ├── index.html            # Página principal con la estructura HTML
@@ -80,7 +80,7 @@ Este proyecto utiliza las siguientes dependencias externas:
 ├── script.js             # Código JavaScript para manejar la lógica del proyecto
 └── README.md             # Este archivo
 ```
-##Contribución 🖇️
+## Contribución 🖇️
 
 _Si deseas contribuir a este proyecto, por favor realiza un fork y crea una pull request con tus cambios._
 
