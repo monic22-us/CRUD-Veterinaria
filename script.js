@@ -136,11 +136,29 @@ $('#pet-table').on('click', '.edit-btn', function () {
   $('#species').val(pet.species);
   $('#age').val(pet.age);
 
+  // Cambiar el texto del botón de "Guardar" a "Actualizar"
+  $('#pet-form button').text('Actualizar'); // Cambia el texto
+
+  // Agregar un atributo de datos al botón para que sepamos si estamos editando
+  $('#pet-form').data('index', index); // Guardamos el índice del registro a editar
+});
+
+// Evento para editar un registro
+$('#pet-table').on('click', '.edit-btn', function () {
+   const index = $(this).data('index'); // Obtener índice del registro
+
+  //  Cargar datos en el formulario
+  const pet = pets[index];
+  $('#name').val(pet.name);
+  $('#owner').val(pet.owner);
+  $('#species').val(pet.species);
+  $('#age').val(pet.age);
+
   // Actualizar el evento submit para guardar cambios
   $('#pet-form').off('submit').on('submit', function (e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    // Actualizar los datos en el array
+    //  Actualizar los datos en el array
     pets[index] = {
       name: $('#name').val(),
       owner: $('#owner').val(),
@@ -148,13 +166,20 @@ $('#pet-table').on('click', '.edit-btn', function () {
       age: $('#age').val()
     };
 
-    // Renderizar la tabla y limpiar el formulario
+    //  Renderizar la tabla y limpiar el formulario
     renderPetsTable();
     $('#pet-form')[0].reset();
 
     // Restaurar el evento original del formulario
     $('#pet-form').off('submit').on('submit', addNewPet);
+
+    //  Cambiar el texto del botón de "Guardar" a "Actualizar"
+    $('#pet-form button').text('Guardar'); // Cambia el texto
   });
+
+  // Agregar un atributo de datos al botón para que sepamos si estamos editando
+  $('#pet-form').data('index', index); // Guardamos el índice del registro a editar
+  
 
   // Cambiar la vista al formulario
   formSection.show();

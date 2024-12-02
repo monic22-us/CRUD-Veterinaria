@@ -1,8 +1,8 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f8ff;
-  margin: 0;
-  padding: 0;
+  margin: 0 auto;
+  padding: 0 auto;
   box-sizing: border-box;
 }
 
@@ -67,7 +67,7 @@ main {
   margin-top: 20px;
   box-sizing: border-box;
   overflow-x: auto;
-  max-height: 650px;
+  max-height: 650px; /* Ajusta la altura del contenedor de la tabla */
 }
 
 input[type="text"], input[type="number"] {
