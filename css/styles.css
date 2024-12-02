@@ -1,155 +1,213 @@
-/* General */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: #ac4caf;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  min-height: 150px; /* garantiza suficiente espacio para el texto y la imagen */
+}
+
+header img {
+  max-width: 100%; /* Ajusta la imagen al 100% del ancho del contenedor */
+  height: auto; /* Mantiene la proporción */
+  display: block; /* Elimina el espacio debajo de la imagen */
+  object-fit: contain; /* Asegura que la imagen no se deforme */
+}
+
+header h1 {
+  font-size: 2.0em;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  height: 110vh;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 600px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 30px;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
+  padding: 100px;
+  text-align: center;
+}
+
+.pets-list-container {
+  width: 100%;
+  max-width: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: block;
+  margin-top: 20px;
+  box-sizing: border-box;
+  overflow-x: auto;
+  max-height: 650px;
+}
+
+input[type="text"], input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #ac4caf;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  font-size: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 15px;
+}
+
+button:hover {
+  background-color: #9b3f9c;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #ac4caf;
+  color: white;
+}
+
+/* Estilos para la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  table-layout: auto; /* Ajuste automático según el contenido */
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+tfoot {
+  background-color: #ac4caf;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.search-container {
+  margin-bottom: 10px;
+  text-align: right;
+}
+
+/* Estilos generales para los botones */
+.edit-btn, .delete-btn {
+  display: inline-block;
+  background-color: #9c27b0; /* Morado para Editar */
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 3px; /* Bordes ligeramente redondeados */
+  text-align: center;
+}
+
+.delete-btn {
+  background-color: #f44336; /* Rojo para Eliminar */
+}
+
+.table-actions {
+  display: flex;
+  justify-content: center; /* Centra los botones */
+  align-items: center; /* Centra verticalmente */
+  gap: 5px; /* Espaciado entre botones */
+}
+
+/* Ajusta el ancho de la columna de acciones */
+#pet-table th:nth-child(5), 
+#pet-table td:nth-child(5) {
+  width: 150px; /* Ajusta según el contenido */
+  text-align: center;
+}
+
+/* Responsividad para pantallas grandes */
+@media (min-width: 1200px) {
+  .pets-list-container {
+    max-width: 1200px; /* Aumenta el ancho máximo del contenedor */
+  }
+
+  table {
+    font-size: 1.1em;
+  }
+
+  th, td {
+    padding: 20px; /* Aumenta el padding para mejorar la legibilidad */
+  }
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+  .pets-list-container {
+    width: 100%;
+    padding: 10px;
+    max-width: 100%; /* Hace que ocupe el ancho completo en pantallas pequeñas */
+  }
+
+  table {
+    font-size: 0.9em;
+    width: 100%;
     box-sizing: border-box;
   }
-  
-  header {
-    background-color: #ac4caf;
-    color: white;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  main {
-    padding: 20px;
-  }
-  
-  h2{
-    color: #ac4caf;
-  }
-  h3 {
-    color: #ac4caf;
-    font-size: 25px;
 
-  }
- 
-  
-  
-  /*form, #search-section, #list-section {
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center; /* Alinea verticalmente los elementos */
-    /*justify-content: flex-start; /* Alinea horizontalmente */
-    /*margin-bottom: 15px; /* Espaciado entre cada campo 
-  } */
-/* Estilo para el contenedor del formulario */
-#pet-form {
-  width: 100%;
-  max-width: 500px;
-  /* margin: 0 auto;*/
-  margin-bottom: 20px;
-}
-
-/* Contenedor de cada grupo de etiqueta + input */
-.form-group {
-  display: flex;
-  align-items: center; /* Alinea verticalmente los elementos */
-  justify-content: flex-start; /* Alinea horizontalmente */
-  margin-bottom: 15px; /* Espaciado entre cada campo */
-}
-
-/* Estilo para las etiquetas */
-.form-group label {
-  width: 100px; /* Define un ancho fijo para las etiquetas */
-  text-align: left; /* Alinea el texto a la izquierda */
-  font-weight: bold; /* Resalta el texto de las etiquetas */
-}
-
-/* Estilo para los campos de entrada */
-.form-group input {
-  flex: 1; /* Hace que el input ocupe el resto del espacio disponible */
-  padding: 8px; /* Agrega espacio interno */
-  border: 1px solid #978383; /* Borde básico */
-  border-radius: 5px; /* Bordes redondeados */
-  font-size: 14px; /* Tamaño de fuente */
-}
-
-/* Botones del formulario */
-#pet-form button {
-  padding: 10px 15px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 5px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-
-
-  
-  
-  label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
-  }
-  
-  input, button {
-    margin-top: 5px;
+  th, td {
     padding: 8px;
-    width: 100%;
-    max-width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
   }
-  
-  button {
-    background-color: #af4c96;
-    color: white;
-    cursor: pointer;
-    max-width: 200px;
-  }
-  
-  button:hover {
-    background-color: #4645a0;
-  }
-  
-  #cancel-edit {
-    background-color: #f44336;
-  }
-  
-  #cancel-edit:hover {
-    background-color: #35c2e5;
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  li {
-    background-color: #f9f9f9;
-    margin: 10px 0;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
+
+  .container {
+    flex-direction: column;
     align-items: center;
   }
-  
-  .actions button {
-    margin-left: 10px;
-    background-color: #f44336;
-    border: none;
-  }
-  
-  .actions button.edit {
-    background-color: #2196F3;
-  }
-  
-  .actions button:hover {
-    opacity: 0.8;
-  }
-  
-  .list-section {
-    margin-top: 20px;
-    align-items: left;
 
+  .edit-btn, .delete-btn {
+    font-size: 10px; /* Reduce el tamaño de los botones en pantallas pequeñas */
+    padding: 4px 8px; /* Ajusta el relleno */
   }
-  
-
-
+}

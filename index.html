@@ -3,83 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CRUD Veterinaria</title>
+  <title>Midnight Pet Clinic</title>
   <link rel="stylesheet" href="css/styles.css">
-  
-  <!-- Agrega la librería jQuery -->
-  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  
-  <!-- Agregar css para datatables -->
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap4.css">
-
-  <!-- Agregar el idioma en español para DataTables -->
-  <script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
   <header>
     <h1>Midnight Pet Clinic</h1>
   </header>
+
   <main>
-    <!-- Formulario para Crear y Actualizar -->
-    <section id="form-section">
-      <h2>Formulario de Mascota</h2>
-      <form id="pet-form">
-        <input type="hidden" id="edit-index">
-        <div class="form-group">
-          <label for="name">Nombre:</label>
-          <input type="text" id="name" required placeholder="Nombre de la Mascota">
-        </div>
-        <div class="form-group">
-          <label for="owner">Dueño:</label>
-          <input type="text" id="owner" required placeholder="Nombre del dueño">
-        </div>
-        <div class="form-group">
-          <label for="species">Especie:</label>
-          <input type="text" id="species" required placeholder="Perro, Gato, etc.">
-        </div>
-        <div class="form-group">
-          <label for="age">Edad:</label>
-          <input type="number" id="age" required placeholder="Edad de la Mascota">
-        </div>
-        <button type="submit">Guardar</button>
-        <button type="reset" id="cancel-edit" style="display: none;">Cancelar</button>
-      </form>
-    </section>
+    <!-- Contenedor de la imagen fuera del formulario -->
+    <div class="image-container">
+      <img src="img/verinariaa.jpg" alt="Veterinaria con mascota">
+    </div>
 
-    <!-- Barra de búsqueda -->
-    <section id="search-section">
-      <h2>Buscar Registro</h2>
-      <input type="text" id="search-bar" placeholder="Escribe el nombre de la mascota">
-    </section>
+    <!-- Contenedor del formulario -->
+    <div class="container">
+      <div class="form-container" id="form-section">
+        <h2>Formulario de Mascota</h2>
+        <form id="pet-form">
+          <div class="form-group">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" placeholder="Nombre de la mascota" required>
+          </div>
+          <div class="form-group">
+            <label for="owner">Dueño:</label>
+            <input type="text" id="owner" placeholder="Nombre del dueño" required>
+          </div>
+          <div class="form-group">
+            <label for="species">Especie:</label>
+            <input type="text" id="species" placeholder="Perro, Gato, etc." required>
+          </div>
+          <div class="form-group">
+            <label for="age">Edad:</label>
+            <input type="number" id="age" placeholder="Edad de la mascota" required>
+          </div>
+          <button type="submit">Guardar</button>
+        </form>
+        <button id="view-pets-btn">Ver Listado de Mascotas</button>
+      </div>
 
-    <!-- Tabla de Mascotas -->
-    <section id="table-section">
-    
-      <table id="pet-table" class="table table-striped table-bordered" style="display: none;">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Dueño</th>
-            <th>Especie</th>
-            <th>Edad</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody id="pet-list-table"></tbody>
-      </table>
-    </section>
+      <!-- Contenedor de la lista de mascotas -->
+      <div class="pets-list-container" id="view-pets-section" style="display: none;">
+        <h2>Listado de Mascotas</h2>
+        <!-- Se eliminó el input de búsqueda de aquí, ahora se controla con el de arriba -->
+        <table id="pet-table" class="display">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Dueño</th>
+              <th>Especie</th>
+              <th>Edad</th>
+              <th>Acciones</th> <!-- Columna para Editar/Eliminar -->
+            </tr>
+          </thead>
+          <tbody id="pet-list-table">
+             <!-- Las filas de mascotas se agregarán aquí con JavaScript -->
+             <!-- <button class="edit-btn" data-index="${index}" title="Editar"> -->
+              <!-- <i class="fa fa-edit"></i> -->
+            <!-- </button> -->
+            <!-- <button class="delete-btn" data-index="${index}" title="Eliminar"> -->
+              <!-- <i class="fa fa-trash"></i> -->
+            <!-- </button> -->
+          </tbody>
+        </table>
+        <button id="back-btn">Volver al Formulario</button>
+      </div>
+    </div>
   </main>
 
   <footer>
-    <p>CRUD Veterinaria - 2024</p>
+    <p>&copy; 2024 Midnight Pet Clinic - Todos los derechos reservados</p>
   </footer>
 
-  <!-- Aquí va el archivo JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
   <script src="script.js"></script>
-
 </body>
 </html>
