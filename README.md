@@ -92,7 +92,7 @@ Para hacer un fork:
 
 
 ## Autores ✒️
-* Reynel García Uriel Alejandro-trabajo inicial
+* Reynel García Uriel Alejandro
 * Huchim Cano Enrique Absalón
 * Monserrath Morales Alonzo
 * García Medina Eduardo David
