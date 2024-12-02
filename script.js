@@ -32,15 +32,15 @@ $(document).ready(function () {
   function renderPetsTable() {
     petTable.clear().draw(); // Limpiar tabla antes de agregar los datos
 
-    pets.forEach((pet,index) => {
+    pets.forEach((pet, index) => {
       petTable.row.add([
         pet.name, 
         pet.owner,
-         pet.species,
-          pet.age,
-           `<button class="edit-btn" data-index="${index}">Editar</button>
-            <button class="delete-btn" data-index="${index}">Eliminar</button>`
-           ]).draw();
+        pet.species,
+        pet.age,
+        `<button class="edit-btn" data-index="${index}">Editar</button>
+        <button class="delete-btn" data-index="${index}">Eliminar</button>`
+      ]).draw();
     });
   }
 
@@ -85,7 +85,7 @@ $(document).ready(function () {
     }
     
     return testPets;
-  }
+  };
 
   // Agregar la funcionalidad de búsqueda con el campo de búsqueda en el formulario
   $('#search-bar').on('input', function () {
@@ -104,125 +104,67 @@ $(document).ready(function () {
   // Cargar las mascotas de prueba en la tabla
   renderPetsTable();
 
+  // Evento para capturar datos del formulario y agregarlos a la tabla
+  $('#pet-form').on('submit', function (e) {
+    e.preventDefault(); // Evitar recargar la página
 
-// Evento para capturar datos del formulario y agregarlos a la tabla
-$('#pet-form').on('submit', function (e) {
-  e.preventDefault(); // Evitar recargar la página
+    const name = $('#name').val();
+    const owner = $('#owner').val();
+    const species = $('#species').val();
+    const age = $('#age').val();
 
-  // Capturar datos del formulario
-  const name = $('#name').val();
-  const owner = $('#owner').val();
-  const species = $('#species').val();
-  const age = $('#age').val();
+    const index = $(this).data('index'); // Obtener índice del registro a editar
 
-  // Agregar los datos al array de mascotas
-  pets.push({ name, owner, species, age });
+    if (index !== undefined) {
+      // Si estamos editando un registro, actualizamos los datos
+      pets[index] = { name, owner, species, age };
+      $('#pet-form button').text('Guardar'); // Volver a "Guardar"
+    } else {
+      // Si no hay índice, estamos agregando un nuevo registro
+      pets.push({ name, owner, species, age });
+    }
 
-  // Renderizar la tabla
-  renderPetsTable();
-
-  // Limpiar el formulario
-  $('#pet-form')[0].reset();
-});
-
-// Evento para editar un registro
-$('#pet-table').on('click', '.edit-btn', function () {
-  const index = $(this).data('index'); // Obtener índice del registro
-
-  // Cargar datos en el formulario
-  const pet = pets[index];
-  $('#name').val(pet.name);
-  $('#owner').val(pet.owner);
-  $('#species').val(pet.species);
-  $('#age').val(pet.age);
-
-  // Cambiar el texto del botón de "Guardar" a "Actualizar"
-  $('#pet-form button').text('Actualizar'); // Cambia el texto
-
-  // Agregar un atributo de datos al botón para que sepamos si estamos editando
-  $('#pet-form').data('index', index); // Guardamos el índice del registro a editar
-});
-
-// Evento para editar un registro
-$('#pet-table').on('click', '.edit-btn', function () {
-   const index = $(this).data('index'); // Obtener índice del registro
-
-  //  Cargar datos en el formulario
-  const pet = pets[index];
-  $('#name').val(pet.name);
-  $('#owner').val(pet.owner);
-  $('#species').val(pet.species);
-  $('#age').val(pet.age);
-
-  // Actualizar el evento submit para guardar cambios
-  $('#pet-form').off('submit').on('submit', function (e) {
-  e.preventDefault();
-
-    //  Actualizar los datos en el array
-    pets[index] = {
-      name: $('#name').val(),
-      owner: $('#owner').val(),
-      species: $('#species').val(),
-      age: $('#age').val()
-    };
-
-    //  Renderizar la tabla y limpiar el formulario
+    // Renderizar la tabla
     renderPetsTable();
+
+    // Limpiar el formulario
     $('#pet-form')[0].reset();
 
-    // Restaurar el evento original del formulario
-    $('#pet-form').off('submit').on('submit', addNewPet);
-
-    //  Cambiar el texto del botón de "Guardar" a "Actualizar"
-    $('#pet-form button').text('Guardar'); // Cambia el texto
+    // Eliminar el índice guardado para evitar editar sin querer
+    $('#pet-form').removeData('index');
   });
 
-  // Agregar un atributo de datos al botón para que sepamos si estamos editando
-  $('#pet-form').data('index', index); // Guardamos el índice del registro a editar
-  
+  // Evento para editar un registro
+  $('#pet-table').on('click', '.edit-btn', function () {
+    const index = $(this).data('index'); // Obtener índice del registro
 
-  // Cambiar la vista al formulario
-  formSection.show();
-  viewPetsSection.hide();
+    // Cargar datos en el formulario
+    const pet = pets[index];
+    $('#name').val(pet.name);
+    $('#owner').val(pet.owner);
+    $('#species').val(pet.species);
+    $('#age').val(pet.age);
+
+    // Cambiar el texto del botón de "Guardar" a "Actualizar"
+    $('#pet-form button').text('Actualizar');
+
+    // Agregar el índice al formulario para actualizar el registro
+    $('#pet-form').data('index', index); 
+
+    // Cambiar la vista al formulario
+    formSection.show();
+    viewPetsSection.hide();
+  });
+
+  // Evento para eliminar un registro
+  $('#pet-table').on('click', '.delete-btn', function () {
+    const index = $(this).data('index'); // Obtener índice del registro
+
+    // Eliminar el registro del array
+    pets.splice(index, 1);
+
+    // Actualizar la tabla
+    renderPetsTable();
+  });
+
 });
-// Evento para eliminar un registro
-$('#pet-table').on('click', '.delete-btn', function () {
-  const index = $(this).data('index'); // Obtener índice del registro
-
-  // Eliminar el registro del array
-  pets.splice(index, 1);
-
-  // Actualizar la tabla
-  renderPetsTable();
-});
-// ---------------------------------------------
-// Guardar datos del formulario en la tabla
-function addNewPet(e) {
-  e.preventDefault();
-  const name = $('#name').val();
-  const owner = $('#owner').val();
-  const species = $('#species').val();
-  const age = $('#age').val();
-  pets.push({ name, owner, species, age });
-  renderPetsTable();
-  $('#pet-form')[0].reset();
-}
-
-// Inicialización
-$('#pet-form').on('submit', addNewPet);
-$('#pet-table').on('click', '.edit-btn', handleEdit);
-$('#pet-table').on('click', '.delete-btn', handleDelete);
-
-// Renderizar mascotas al inicio
-renderPetsTable();
-
-$('#pet-table').DataTable({
-  autoWidth: false, // Desactiva el ajuste automático de ancho
-  columnDefs: [
-    { width: '20%', targets: 4 }, // Define un ancho fijo para la columna de acciones
-    { orderable: false, targets: 4 } // Desactiva la ordenación en la columna de acciones
-  ]
-});
-
-
-}); 
