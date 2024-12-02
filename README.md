@@ -68,6 +68,7 @@ Este proyecto utiliza las siguientes dependencias externas:
 * Editar una mascota existente: Haz clic en Editar al lado de una mascota en la tabla. Los datos de esa mascota se cargarán en el formulario, donde podrás modificar la información. Luego, haz clic en Actualizar.
 * Eliminar una mascota: Haz clic en Eliminar al lado de una mascota en la tabla para eliminar el registro.
 * Buscar una mascota: Usa la barra de búsqueda en la parte superior de la tabla para encontrar una mascota por su nombre, dueño o especie.
+  
 ##Estructura de Archivos
 ```
 /Midnight-Pet-Clinic
